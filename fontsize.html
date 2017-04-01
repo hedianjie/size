@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta charset="UTF-8" />
+	<title>适配字体</title>
+	<style type="text/css">
+		html,body,ul,li,p,span,div{
+			margin: 0;
+			padding: 0;
+		}
+		html{
+			font-size: 100%;
+			font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+		}
+		.font-outer{
+			padding: 1.5rem;
+			
+		}
+		.font-outer .content-title{
+			font-size: 3rem;
+			color: #282828;
+			margin-bottom: 2.5rem;
+		}
+		
+		.font-outer .content-body, .font-outer .content-body p{
+			line-height: 1.5;
+			font-size: 2.2rem;
+			color: #544b4b;
+		}
+		.font-outer .content-body .title{
+			color: #900c0c;
+		}
+	</style>
+</head>
+<body>
+	<div class="font-outer">
+		<div class="content-title"><p>规则说明</p></div>
+		<div class="content-body">
+			<p class="title">牌型大小：</p>
+			<p>火箭是最大的牌</p>
+			<p>火箭是最大的牌</p>
+			
+			<p>火箭是最大的牌</p><p>火箭是最大的牌</p>
+			<p>火箭是最大的牌</p>
+			<p>火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌火箭是最大的牌</p>
+			<p>火箭是最大的牌</p>
+			<p>火箭是最大的牌</p>
+			<p>火箭是最大的牌</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+		/*
+	 * 类似vw的字体放大缩小
+	 * def: 设计稿的宽度( 根据设计稿的宽度来设置字体大小 用rem布局)
+	 * 原理根据设计稿的宽度与页面当前的宽度比例来放大缩小根元素的字体大小
+	 * */
+	var setFontSize = function(def){// def 设置一个初始的宽度；
+		var font_html = document.documentElement;
+		var nowWidth;
+		if(window.getComputedStyle){
+			nowWidth = window.getComputedStyle(document.body)['width'] || window.getComputedStyle(document.documentElement)['width'];
+		}else{
+			nowWidth = document.body.currentStyle('width') || document.documentElement.currentStyle('width');
+		}
+		// 去除单位（px）
+		nowWidth = nowWidth.replace(/px/g,"");
+		// 获取放大或缩小的比例
+		var reta = nowWidth/def*100;
+		font_html.style.fontSize = reta+"%"
+	};
+	// 用法 例：
+	setFontSize(800)
+	window.onresize  = function(){
+		setFontSize(800)
+	}
+</script>
+</html>
